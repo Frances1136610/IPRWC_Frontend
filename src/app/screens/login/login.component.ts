@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import Validation from 'src/app/utils/validation';
 
 @Component({
   selector: 'app-login',
@@ -30,9 +29,6 @@ export class LoginComponent implements OnInit {
           ]
         ],
       },
-      {
-        validators: [Validation.match('password', 'confirmPassword')]
-      }
     );
   }
 
