@@ -1,1 +1,66 @@
-<p>registration works!</p>
+<div id="background">
+  <div id="left-half">
+  </div>
+
+  <div id="right-half">
+    <div>
+      <div id="flavor">
+        <img src="\assets\images\logo-color.png" alt="Logo" style="width: 200px; height: 200px; margin: 0;">
+        <h1>Register Account</h1>
+        <h2>Please enter your login information</h2>
+      </div>
+
+      <div class="login-form">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input
+              placeholder="EMAIL"
+              type="text"
+              formControlName="email"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+            />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
+              <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input
+              placeholder="PASSWORD"
+              type="password"
+              formControlName="password"
+              class="form-control"
+              [type]="hide ? 'password' : 'text'"
+              [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+            />
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+              <div *ngIf="f['password'].errors['required']">Password is required</div>
+              <div *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input
+              placeholder="REPEAT PASSWORD"
+              type="password"
+              formControlName="repeatPassword"
+              class="form-control"
+              [type]="hide ? 'password' : 'text'"
+              [ngClass]="{ 'is-invalid': submitted && f['repeatPassword'].errors }"
+            />
+            <div *ngIf="submitted && f['repeatPassword'].errors" class="invalid-feedback">
+              <div *ngIf="f['repeatPassword'].errors['required']">Password is required</div>
+              <div *ngIf="f['repeatPassword'].errors['minlength']">Password must be at least 6 characters</div>
+            </div>
+          </div>
+
+          <div class="form-group" id="log-in-button">
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

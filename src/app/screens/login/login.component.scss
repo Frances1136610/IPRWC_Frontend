@@ -13,11 +13,36 @@
   width: 50vw;
   height: 100vh;
   background-image: url("/assets/images/login-background.jpg");
-  //background-size: cover;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}
+
+#left-half h2 {
+  font-size: 40px;
+  font-family: 'Old Standard TT';
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+#left-half h1 {
+  font-size: 75px;
+  font-family: 'Old Standard TT';
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+mat-divider {
+  border-top-color: white;
+  border-top-width: 3px;
+  width: 300px;
+  margin: auto;
 }
 
 #right-half {
-  width: 100vw;
+  width: 50vw;
   display: grid;
   place-items: center;
 }
