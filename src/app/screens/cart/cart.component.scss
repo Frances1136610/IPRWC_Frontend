@@ -1,0 +1,16 @@
+.cart-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}

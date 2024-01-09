@@ -12,5 +12,14 @@ export class ProductsComponent {
   ];
 
   constructor() { }
+
+  // addToCart(product: any): void {
+  //   this.cartService.addToCart(product.id)
+  //     .subscribe(response => {
+  //       console.log('Product added to cart:', response);
+  //     }, error => {
+  //       console.error('Error adding product to cart:', error);
+  //     });
+  // }
 }
 

@@ -16,6 +16,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDividerModule} from "@angular/material/divider";
+import { CartComponent } from './screens/cart/cart.component';
+import { ProductsComponent } from './screens/products/products.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatDividerModule} from "@angular/material/divider";
     SlideshowComponent,
     LoginComponent,
     RegistrationComponent,
-    HomeComponent
+    HomeComponent,
+    CartComponent,
+    ProductsComponent
   ],
     imports: [
         BrowserModule,
