@@ -1,19 +1,12 @@
 export class User {
-  private _id: bigint | undefined;
+  public _id: number;
   private _email: string;
   private _password: string;
 
-  constructor(email: string, password: string) {
+  constructor(id: number, email: string, password: string) {
+    this._id = id;
     this._email = email;
     this._password = password;
-  }
-
-  get id(): bigint {
-    return <bigint>this._id;
-  }
-
-  set id(value: bigint) {
-    this._id = value;
   }
 
   get email(): string {

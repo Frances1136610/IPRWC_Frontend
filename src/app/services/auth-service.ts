@@ -9,6 +9,8 @@ import {environment} from "../../environment/environment";
   providedIn: "root"
 })
 export class AuthService {
+  // @ts-ignore
+  private userId: number;
 
   constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
 
@@ -32,5 +34,15 @@ export class AuthService {
           throw new Error(data['message'])
         }
       }));
+  }
+
+  getNewUserId() {
+    return this.http.get(environment.apiKey + 'auth/id')
+      .pipe(map(res => {
+        // @ts-ignore
+        this.userId = res['payload'];
+          return this.userId;
+        }
+      ));
   }
 }

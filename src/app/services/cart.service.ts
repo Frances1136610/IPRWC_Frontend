@@ -18,7 +18,7 @@ export class CartService {
 
   getCart() {
     let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()});
-    return this.http.get<any>(environment.apiKey + 'cartitems/' + this.userService.getUser().id,
+    return this.http.get<any>(environment.apiKey + 'cartitems/' + this.userService.getUser()._id,
       {
         headers: header
       }).pipe(map(data => {
@@ -32,7 +32,7 @@ export class CartService {
 
   addToCart(cartItem: CartItem) {
     let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()});
-    return this.http.post<any>(environment.apiKey + 'cartitems/' + this.userService.getUser().id,
+    return this.http.post<any>(environment.apiKey + 'cartitems/' + this.userService.getUser()._id,
       {
         headers: header
       }).pipe(map(data => {
@@ -46,5 +46,4 @@ export class CartService {
 
   setCart(cartItems: CartItem []) {
     this.cartItems = cartItems;
-  }
-}
+  }}

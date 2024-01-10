@@ -21,6 +21,9 @@ export class RegistrationComponent {
   hide = true;
   error = "";
   private authSub!: Subscription;
+  private userSub!: Subscription;
+  // @ts-ignore
+  private newUserId: number;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private userService: UserService) {}
 
@@ -59,27 +62,32 @@ export class RegistrationComponent {
       return;
     }
 
-    let credentials = {
-      email: this.form.value.email,
-      password: this.form.value.password
-    }
+    this.userSub = this.authService.getNewUserId().subscribe(data => {
+      this.newUserId = data;
+      const user = new User(
+        this.newUserId,
+        this.form.value.email,
+        this.form.value.password,
+      );
+      this.userService.setUser(user);
 
-    const user = new User(
-      this.form.value.email,
-      this.form.value.password,
-    );
-
-    this.userService.setUser(user);
-
-    this.authSub = this.authService.register(credentials).subscribe(
-      () => {
-        this.authSub.unsubscribe();
-      },
-      errorMessage => {
-        console.log(errorMessage);
-        this.error = errorMessage;
+      let credentials = {
+        id: this.newUserId,
+        email: this.form.value.email,
+        password: this.form.value.password
       }
-    );
-    this.router.navigateByUrl("/");
+
+      this.authSub = this.authService.register(credentials).subscribe(
+        () => {
+          this.authSub.unsubscribe();
+        },
+        errorMessage => {
+          console.log(errorMessage);
+          this.error = errorMessage;
+        }
+      );
+      this.router.navigateByUrl("/");
+      this.userSub.unsubscribe();
+    });
   }
 }
