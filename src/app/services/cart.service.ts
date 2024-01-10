@@ -38,6 +38,7 @@ export class CartService {
         headers: header
       }).pipe(map(data => {
         if (data['code'] === 'ACCEPTED') {
+          console.log("JDJDJDJ");
         } else {
           throw new Error(data['message']);
         }

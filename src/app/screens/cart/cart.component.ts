@@ -58,11 +58,13 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   removeCartItem(cartItem: CartItem){
-    console.log(cartItem);
-
     this.cartService.removeFromCart(cartItem._id).subscribe(() => {
-
       }
     );
+
+    // @ts-ignore
+    const index: number = this.cart.indexOf(cartItem);
+    // @ts-ignore
+    this.cart.splice(index, 1);
   }
 }

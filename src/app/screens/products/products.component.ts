@@ -34,7 +34,7 @@ export class ProductsComponent implements OnInit{
       price: product.price
     }
 
-    this.cartService.addToCart(product).subscribe(() => {
+    this.cartService.addToCart(productDetails).subscribe(() => {
     });
   }
 }
