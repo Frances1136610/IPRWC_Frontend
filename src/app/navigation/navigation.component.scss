@@ -1,9 +1,65 @@
-.icon {
-  margin: 5px;
-}
-
-nav {
+.navbar {
   padding: 5px;
   height: 100px;
-  border-bottom: 0.5px grey solid;
 }
+
+.logo {
+  width: 80px;
+  height: 80px;
+  display: block;
+}
+
+.navbar-nav {
+  display: flex;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.navbar-nav {
+  .nav-link {
+    position: relative;
+    color: #BC6C25;
+    text-decoration: none;
+    overflow: hidden;
+    transition: color 0.3s ease;
+    font-family: "David Libre";
+    font-size: 20px;
+
+
+    &::before {
+      transition: 300ms;
+      height: 1px;
+      content: "";
+      position: absolute;
+      background-color: #DDA15E;
+      width: 0%;
+      bottom: 10px;
+    }
+
+    &:hover {
+      color: #DDA15E;
+
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons .nav-link {
+  color: #BC6C25;
+  font-size: 25px;
+  transition: color 0.3s ease;
+}
+
+.icons .nav-link:hover {
+  color: #DDA15E;
+}
+
