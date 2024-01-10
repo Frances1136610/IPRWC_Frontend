@@ -1,11 +1,15 @@
 <app-navigation></app-navigation>
-<div class="grid">
+<div class="flex">
   <div *ngFor="let product of products" class="product-card">
-    <img [src]="'assets/images/' + product.id + '.jpg'" alt="{{ product.name }}" class="product-image" />
+    <div class="image-container">
+      <img [src]="'assets/images/' + product.id + '.jpg'" alt="{{ product.name }}" class="product-image" />
+      <div class="button-container">
+        <button>Add to cart</button>
+      </div>
+    </div>
     <div class="product-details">
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.description }}</p>
-      <button >Add to Cart</button>
+      <h3 class="card-name">{{ product.name }}</h3>
+      <p class="card-description">{{ product.description }}</p>
     </div>
   </div>
 </div>
