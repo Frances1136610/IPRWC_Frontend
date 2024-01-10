@@ -2,47 +2,47 @@ import {Product} from "./product.model";
 import {Cart} from "./cart.model";
 
 export class CartItem {
-  private _id: bigint;
-  private _cart: Cart;
-  private _product: Product;
-  private _quantity: number;
+  private id: bigint;
+  private cart: Cart;
+  private product: Product;
+  private quantity: number;
 
   constructor(id: bigint, cart: Cart, product: Product, quantity: number) {
-    this._id = id;
-    this._cart = cart;
-    this._product = product;
-    this._quantity = quantity;
+    this.id = id;
+    this.cart = cart;
+    this.product = product;
+    this.quantity = quantity;
   }
 
-  get id(): bigint {
-    return this._id;
+  get _id(): bigint {
+    return this.id;
   }
 
-  set id(value: bigint) {
-    this._id = value;
+  set _id(value: bigint) {
+    this.id = value;
   }
 
-  get cart(): Cart {
-    return this._cart;
+  get _cart(): Cart {
+    return this.cart;
   }
 
-  set cart(value: Cart) {
-    this._cart = value;
+  set _cart(value: Cart) {
+    this.cart = value;
   }
 
-  get product(): Product {
-    return this._product;
+  get _product(): Product {
+    return this.product;
   }
 
-  set product(value: Product) {
-    this._product = value;
+  set _product(value: Product) {
+    this.product = value;
   }
 
-  get quantity(): number {
-    return this._quantity;
+  get _quantity(): number {
+    return this.quantity;
   }
 
-  set quantity(value: number) {
-    this._quantity = value;
+  set _quantity(value: number) {
+    this.quantity = value;
   }
 }

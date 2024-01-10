@@ -32,7 +32,7 @@ export class CartComponent implements OnInit, OnDestroy {
     if (!this.cart) {
       return 0;
     }
-    return this.cart.reduce((total, item) => total + item.quantity, 0);
+    return this.cart.reduce((total, item) => total + item._quantity, 0);
   }
 
   fakeDeliveryTime(): string {
@@ -40,18 +40,27 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   updateQuantity(cartItem: CartItem): void {
-    if (cartItem.quantity > 1) {
-      cartItem.quantity--;
+    if (cartItem._quantity > 1) {
+      cartItem._quantity--;
     }
 
     let productDetails = {
-      id: cartItem.id,
-      cart_id: cartItem.cart.id,
-      product_id: cartItem.cart.id,
-      quantity: cartItem.quantity
+      id: cartItem._id,
+      cart_id: cartItem._cart.id,
+      product_id: cartItem._cart.id,
+      quantity: cartItem._quantity
     }
 
     this.cartService.updateQuantity(productDetails).subscribe(() => {
+
+      }
+    );
+  }
+
+  removeCartItem(cartItem: CartItem){
+    console.log(cartItem);
+
+    this.cartService.removeFromCart(cartItem._id).subscribe(() => {
 
       }
     );

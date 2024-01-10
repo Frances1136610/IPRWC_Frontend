@@ -57,6 +57,14 @@ export class CartService {
     }));
   }
 
+  removeFromCart(id: bigint){
+    let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()});
+    return this.http.delete(environment.apiKey + 'cartitems/delete/' + id, {
+      headers: header
+    });
+  }
+
   setCart(cartItems: CartItem []) {
     this.cartItems = cartItems;
-  }}
+  }
+}
