@@ -1,9 +1,33 @@
 <app-navigation></app-navigation>
-<div *ngFor="let item of cart" class="cart-item">
-  <img [src]="'assets/images/' + item.id + '.jpg'" alt="{{ item.name }}" class="cart-item-image" />
-  <div class="cart-item-details">
-    <h4>{{ item.name }}</h4>
-    <p>Price: ${{ item.price }}</p>
-    <p>Quantity: {{ item.quantity }}</p>
+<div class="container">
+  <h1>Your Cart</h1>
+  <div class="content">
+    <div class="items">
+      <div *ngFor="let item of cart" class="cart-item">
+        <img [src]="'assets/images/' + item.product.id + '.jpg'" alt="{{ item.product.name }}" class="cart-item-image" />
+        <div class="cart-item-details">
+          <div class="product-details">
+            <p class="item-name">{{ item.product.name }}</p>
+            <p class="item-description">{{ item.product.description }}</p>
+          </div>
+          <p class="item-price">{{ item.product.price }}</p>
+          <div class="quantity-container">
+            <button class="quantity-button" (click)="decreaseQuantity(item)"><span class="far fa-minus"></span></button>
+            <input type="number" [(ngModel)]="item.quantity" min="1" />
+            <button class="quantity-button" (click)="increaseQuantity(item)"><span class="far fa-plus"></span></button>
+          </div>
+          <button class="remove-btn"><span class="far fa-remove"></span></button>
+        </div>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <div class="summary-card">
+        <h2>Order summary</h2>
+        <p>Subtotal: €{{ calculateTotalPrice() }}</p>
+        <p>Estimated delivery time: {{ fakeDeliveryTime() }}</p>
+        <button class="button">Proceed to checkout</button>
+        <button class="button btn-shopping">Continue shopping</button>
+      </div>
+    </div>
   </div>
 </div>

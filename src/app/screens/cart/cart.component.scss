@@ -1,16 +1,138 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 30px 10px 10px;
+  color: #BC6C25;
+  text-transform: uppercase;
+  font-family: 'David Libre', serif;
+  font-size: 50px;
+}
+
+p {
+  color: #BC6C25;
+  text-transform: uppercase;
+  font-family: 'David Libre', serif;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.items {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
 .cart-item {
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
   display: flex;
+  flex-direction: row;
+}
+
+.product-details {
+  width: 200px;
+
+  p {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .item-description {
+    font-size: 10px;
+  }
 }
 
 .cart-item-image {
-  width: 80px;
+  width: 100px;
   height: auto;
   margin-right: 10px;
 }
 
 .cart-item-details {
   flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.summary-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #BC6C25;
+  text-transform: capitalize;
+  font-family: 'David Libre', serif;
+}
+
+.button {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+  background-color: #DDA15E;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-family: 'David Libre', serif;
+  text-transform: uppercase;
+}
+
+.btn-shopping {
+  background-color: white;
+  color: #BC6C25;
+  font-family: 'David Libre', serif;
+  text-transform: uppercase;
+}
+
+.quantity-container {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  border: 1px solid #ddd;
+  width: 100px;
+  height: 50px;
+  margin: 10px 10px 10px 100px;
+}
+
+.item-price {
+  margin: 10px 10px 10px 20px;
+}
+
+input {
+  -moz-appearance: textfield;
+  background-color: white;
+  width: 40px;
+  border: none;
+  text-align: center;
+}
+
+.remove-btn {
+  border: none;
+  background-color: white;
+  font-size: 30px;
+  margin-left: auto;
+}
+
+.quantity-button {
+  width: 20px;
+  background-color: white;
+  text-align: center;
+  border: none;
 }

@@ -5,9 +5,9 @@ export class CartItem {
   private _id: bigint;
   private _cart: Cart;
   private _product: Product;
-  private _quantity: bigint;
+  private _quantity: number;
 
-  constructor(id: bigint, cart: Cart, product: Product, quantity: bigint) {
+  constructor(id: bigint, cart: Cart, product: Product, quantity: number) {
     this._id = id;
     this._cart = cart;
     this._product = product;
@@ -38,11 +38,11 @@ export class CartItem {
     this._product = value;
   }
 
-  get quantity(): bigint {
+  get quantity(): number {
     return this._quantity;
   }
 
-  set quantity(value: bigint) {
+  set quantity(value: number) {
     this._quantity = value;
   }
 }
