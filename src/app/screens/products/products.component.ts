@@ -1,25 +1,26 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Subscription} from "rxjs";
+import {ProductsService} from "../../services/products.service";
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent {
-  products: any[] = [
-    { id: 1, name: 'Product 1', price: 20.99, description: 'Description for Product 1' },
-    { id: 2, name: 'Product 2', price: 15.49, description: 'Description for Product 2' },
-  ];
+export class ProductsComponent implements OnInit{
 
-  constructor() { }
+  private productsSub: Subscription | undefined;
+  public products: any[] | undefined;
 
-  // addToCart(product: any): void {
-  //   this.cartService.addToCart(product.id)
-  //     .subscribe(response => {
-  //       console.log('Product added to cart:', response);
-  //     }, error => {
-  //       console.error('Error adding product to cart:', error);
-  //     });
-  // }
+  constructor(private productsService: ProductsService) {
+  }
+
+  ngOnInit(): void {
+    this.productsService.setProducts([]);
+    this.productsSub = this.productsService.getProducts().subscribe(data => {
+      this.products = data;
+    });
+    console.log('products ' + this.products);
+  }
 }
 

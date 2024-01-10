@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService} from "../../services/cart.service";
+import {Subscription} from "rxjs";
+import {ProductsService} from "../../services/products.service";
 
 @Component({
   selector: 'app-cart',
@@ -7,21 +9,17 @@ import {CartService} from "../../services/cart.service";
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cartItems: any[] = [];
+  private cartSub: Subscription | undefined;
+  public cart: any[] | undefined;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {
+  }
 
   ngOnInit(): void {
-    this.cartService.getCartItems().subscribe(items => {
-      this.cartItems = items;
+    this.cartService.setCart([]);
+    this.cartSub = this.cartService.getCart().subscribe(data => {
+      this.cart = data;
     });
-  }
-
-  removeFromCart(productId: number): void {
-    this.cartService.removeFromCart(productId);
-  }
-
-  clearCart(): void {
-    this.cartService.clearCart();
+    console.log('products ' + this.cart);
   }
 }

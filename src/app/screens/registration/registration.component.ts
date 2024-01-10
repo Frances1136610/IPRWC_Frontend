@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth-service";
+import {User} from "../../models/user.model";
+import {UserService} from "../../services/user-service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-registration',
@@ -15,8 +19,10 @@ export class RegistrationComponent {
   });
   submitted = false;
   hide = true;
+  error = "";
+  private authSub!: Subscription;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -52,7 +58,28 @@ export class RegistrationComponent {
     if (this.form.invalid) {
       return;
     }
-    this.router.navigateByUrl('/');
-    console.log(JSON.stringify(this.form.value, null, 2));
+
+    let credentials = {
+      email: this.form.value.email,
+      password: this.form.value.password
+    }
+
+    const user = new User(
+      this.form.value.email,
+      this.form.value.password,
+    );
+
+    this.userService.setUser(user);
+
+    this.authSub = this.authService.register(credentials).subscribe(
+      () => {
+        this.authSub.unsubscribe();
+      },
+      errorMessage => {
+        console.log(errorMessage);
+        this.error = errorMessage;
+      }
+    );
+    this.router.navigateByUrl("/");
   }
 }

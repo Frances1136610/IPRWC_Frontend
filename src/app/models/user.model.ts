@@ -1,15 +1,34 @@
 export class User {
-  constructor(
-    public email: string,
-    public id: string,
-    private _token: string,
-    private _tokenExpirationDate: Date) {
+  private _id: bigint | undefined;
+  private _email: string;
+  private _password: string;
+
+  constructor(email: string, password: string) {
+    this._email = email;
+    this._password = password;
   }
 
-  get token() {
-    if(!this._tokenExpirationDate || new Date() > this._tokenExpirationDate) {
-      return null;
-    }
-    return this._token;
+  get id(): bigint {
+    return <bigint>this._id;
+  }
+
+  set id(value: bigint) {
+    this._id = value;
+  }
+
+  get email(): string {
+    return this._email;
+  }
+
+  set email(value: string) {
+    this._email = value;
+  }
+
+  get password(): string {
+    return this._password;
+  }
+
+  set password(value: string) {
+    this._password = value;
   }
 }

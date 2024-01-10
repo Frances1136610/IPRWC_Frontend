@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, map} from 'rxjs';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {UserService} from "./user-service";
+import {environment} from "../../environment/environment";
+import {CartItem} from "../models/cart_item.model";
+import {Product} from "../models/product.model";
 
 @Injectable({
   providedIn: 'root'
@@ -8,30 +13,38 @@ export class CartService {
   private cartItems: any[] = [];
   private cartSubject = new BehaviorSubject<any[]>([]);
 
-  getCartItems(): BehaviorSubject<any[]> {
-    return this.cartSubject;
+  constructor(private http: HttpClient, private userService: UserService) {
   }
 
-  addToCart(product: any): void {
-    const existingItem = this.cartItems.find(item => item.id === product.id);
-
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      const newItem = { ...product, quantity: 1 };
-      this.cartItems.push(newItem);
-    }
-
-    this.cartSubject.next([...this.cartItems]);
+  getCart() {
+    let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()});
+    return this.http.get<any>(environment.apiKey + 'cartitems/' + this.userService.getUser().id,
+      {
+        headers: header
+      }).pipe(map(data => {
+      for (let i = 0; i < data['payload'].length; i++) {
+          this.cartItems.push(new CartItem(data['payload'][i].id, data['payload'][i].cart, data['payload'][i].product, data['payload'][i].quantity));
+        }
+        return this.cartItems;
+      }
+    ));
   }
 
-  removeFromCart(productId: number): void {
-    this.cartItems = this.cartItems.filter(item => item.id !== productId);
-    this.cartSubject.next([...this.cartItems]);
+  addToCart(cartItem: CartItem) {
+    let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()});
+    return this.http.post<any>(environment.apiKey + 'cartitems/' + this.userService.getUser().id,
+      {
+        headers: header
+      }).pipe(map(data => {
+        for (let i = 0; i < data['payload'].length; i++) {
+          this.cartItems.push(new CartItem(data['payload'][i].id, data['payload'][i].cart, data['payload'][i].product, data['payload'][i].quantity));
+        }
+        return this.cartItems;
+      }
+    ));
   }
 
-  clearCart(): void {
-    this.cartItems = [];
-    this.cartSubject.next([]);
+  setCart(cartItems: CartItem []) {
+    this.cartItems = cartItems;
   }
 }

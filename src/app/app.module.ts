@@ -18,6 +18,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDividerModule} from "@angular/material/divider";
 import { CartComponent } from './screens/cart/cart.component';
 import { ProductsComponent } from './screens/products/products.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ProductsComponent } from './screens/products/products.component';
     RegistrationComponent,
     HomeComponent,
     CartComponent,
-    ProductsComponent
+    ProductsComponent,
   ],
     imports: [
         BrowserModule,
@@ -40,7 +41,8 @@ import { ProductsComponent } from './screens/products/products.component';
         MatIconModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDividerModule
+        MatDividerModule,
+        HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent],
