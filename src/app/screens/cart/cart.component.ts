@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
 import { CartItem } from '../../models/cart-item.model';
+import {Product} from "../../models/product.model";
 
 @Component({
   selector: 'app-cart',
@@ -38,13 +39,21 @@ export class CartComponent implements OnInit, OnDestroy {
     return '2-3 business days';
   }
 
-  decreaseQuantity(item: any): void {
-    if (item.quantity > 1) {
-      item.quantity--;
+  updateQuantity(cartItem: CartItem): void {
+    if (cartItem.quantity > 1) {
+      cartItem.quantity--;
     }
-  }
 
-  increaseQuantity(item: any): void {
-    item.quantity++;
+    let productDetails = {
+      id: cartItem.id,
+      cart_id: cartItem.cart.id,
+      product_id: cartItem.cart.id,
+      quantity: cartItem.quantity
+    }
+
+    this.cartService.updateQuantity(productDetails).subscribe(() => {
+
+      }
+    );
   }
 }

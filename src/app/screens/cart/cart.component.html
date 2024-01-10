@@ -12,9 +12,9 @@
           </div>
           <p class="item-price">{{ item.product.price }}</p>
           <div class="quantity-container">
-            <button class="quantity-button" (click)="decreaseQuantity(item)"><span class="far fa-minus"></span></button>
+            <button class="quantity-button" (click)="updateQuantity(item)"><span class="far fa-minus"></span></button>
             <input type="number" [(ngModel)]="item.quantity" min="1" />
-            <button class="quantity-button" (click)="increaseQuantity(item)"><span class="far fa-plus"></span></button>
+            <button class="quantity-button" (click)="updateQuantity(item)"><span class="far fa-plus"></span></button>
           </div>
           <button class="remove-btn"><span class="far fa-remove"></span></button>
         </div>

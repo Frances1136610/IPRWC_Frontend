@@ -44,6 +44,19 @@ export class CartService {
       }));
   }
 
+  updateQuantity(product: Object) {
+    let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()});
+    return this.http.put<any>(environment.apiKey + 'cartitems/change-quantity', product,
+      {
+        headers: header
+      }).pipe(map(data => {
+      if (data['code'] === 'ACCEPTED') {
+      } else {
+        throw new Error(data['message']);
+      }
+    }));
+  }
+
   setCart(cartItems: CartItem []) {
     this.cartItems = cartItems;
   }}
