@@ -1,4 +1,4 @@
-<head>
+<head xmlns:th="http://www.w3.org/1999/xhtml">
   <title>Register</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.0/css/all.css">
 </head>
@@ -20,6 +20,10 @@
 
       <li class="nav-item">
         <a class="nav-link" href="/products">Products</a>
+      </li>
+
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link" href="/admin">Admin</a>
       </li>
     </ul>
 

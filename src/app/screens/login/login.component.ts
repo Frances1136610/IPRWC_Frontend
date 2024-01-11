@@ -62,11 +62,13 @@ export class LoginComponent {
           data.id,
           data.email,
           data.password,
+          data.role
         );
         this.userService.setUser(user);
       });
       this.authSub.unsubscribe();
       this.router.navigate(['/'])
+      console.log(this.userService.getUser());
     });
     this.form.reset();
   }

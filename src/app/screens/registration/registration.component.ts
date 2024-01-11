@@ -68,6 +68,7 @@ export class RegistrationComponent {
         this.newUserId,
         this.form.value.email,
         this.form.value.password,
+        "USER"
       );
       this.userService.setUser(user);
 
