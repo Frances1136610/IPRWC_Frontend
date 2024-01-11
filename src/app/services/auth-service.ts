@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {map} from "rxjs";
 import {UserService} from "./user-service";
@@ -44,5 +44,19 @@ export class AuthService {
           return this.userId;
         }
       ));
+  }
+
+  getInfo() {
+    let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()});
+    return this.http.get<any>(environment.apiKey + 'auth/info',
+    {
+      headers: header
+    }).pipe(map(data => {
+      if (data['code'] === 'ACCEPTED') {
+        return data['payload'];
+      } else {
+        throw new Error(data['payload'])
+      }
+    }));
   }
 }

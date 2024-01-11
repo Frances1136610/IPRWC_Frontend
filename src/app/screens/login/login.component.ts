@@ -2,6 +2,9 @@ import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth-service";
+import {Subscription} from "rxjs";
+import {User} from "../../models/user.model";
+import {UserService} from "../../services/user-service";
 
 @Component({
   selector: 'app-login',
@@ -15,8 +18,11 @@ export class LoginComponent {
   });
   error: string = '';
   submitted = false;
+  private authSub!: Subscription;
+  private infoSub!: Subscription;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private userService: UserService) {
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -50,18 +56,18 @@ export class LoginComponent {
       password: this.form.value.password
     }
 
-    console.log(credentials);
-
-    this.authService.login(credentials).subscribe(
-      resData => {
-        console.log(resData);
-        this.router.navigate(['/']);
-      },
-      errorMessage => {
-        console.log(errorMessage);
-        this.error = errorMessage;
-      }
-    );
+    this.authSub = this.authService.login(credentials).subscribe(() => {
+      this.infoSub = this.authService.getInfo().subscribe(data => {
+        const user = new User(
+          data.id,
+          data.email,
+          data.password,
+        );
+        this.userService.setUser(user);
+      });
+      this.authSub.unsubscribe();
+      this.router.navigate(['/'])
+    });
     this.form.reset();
   }
 }
