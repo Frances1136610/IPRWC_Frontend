@@ -38,11 +38,30 @@ export class CartComponent implements OnInit, OnDestroy {
     return '2-3 business days';
   }
 
-  updateQuantity(cartItem: CartItem): void {
+  decreaseQuantity(cartItem: CartItem): void {
     if (cartItem._quantity > 1) {
       cartItem._quantity--;
     }
 
+    console.log(cartItem._quantity);
+
+    let productDetails = {
+      id: cartItem._id,
+      cart_id: cartItem._cart.id,
+      product_id: cartItem._cart.id,
+      quantity: cartItem._quantity
+    }
+
+    this.cartService.updateQuantity(productDetails).subscribe(() => {
+
+      }
+    );
+  }
+
+  increaseQuantity(cartItem: CartItem): void {
+    cartItem._quantity++;
+
+    console.log(cartItem._quantity);
     let productDetails = {
       id: cartItem._id,
       cart_id: cartItem._cart.id,
