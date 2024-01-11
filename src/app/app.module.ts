@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -18,6 +17,7 @@ import {HomeModule} from "./modules/home.module";
 import {SlideShowModule} from "./modules/slideshow.module";
 import {RegistrationModule} from "./modules/registration.module";
 import {LoginModule} from "./modules/login.module";
+import {AdminModule} from "./modules/admin.module";
 
 @NgModule({
   declarations: [
@@ -40,7 +40,8 @@ import {LoginModule} from "./modules/login.module";
     HomeModule,
     SlideShowModule,
     RegistrationModule,
-    LoginModule
+    LoginModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent],
