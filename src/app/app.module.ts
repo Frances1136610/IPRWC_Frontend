@@ -6,10 +6,6 @@ import { AppComponent } from './app.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SlideshowComponent } from './slideshow/slideshow.component';
-import { LoginComponent } from './screens/login/login.component';
-import { RegistrationComponent } from './screens/registration/registration.component';
-import { HomeComponent } from './screens/home/home.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -18,13 +14,14 @@ import {MatDividerModule} from "@angular/material/divider";
 import {HttpClientModule} from "@angular/common/http";
 import { ProductsModule } from "src/app/modules/product.module";
 import {CartModule} from "./modules/cart.module";
+import {HomeModule} from "./modules/home.module";
+import {SlideShowModule} from "./modules/slideshow.module";
+import {RegistrationModule} from "./modules/registration.module";
+import {LoginModule} from "./modules/login.module";
+
 @NgModule({
   declarations: [
     AppComponent,
-    SlideshowComponent,
-    LoginComponent,
-    RegistrationComponent,
-    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +36,11 @@ import {CartModule} from "./modules/cart.module";
     MatDividerModule,
     HttpClientModule,
     ProductsModule,
-    CartModule
+    CartModule,
+    HomeModule,
+    SlideShowModule,
+    RegistrationModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './slideshow.component.html',
   styleUrls: ['./slideshow.component.scss']
 })
-export class SlideshowComponent {
+export class SlideShowComponent {
 
 }
