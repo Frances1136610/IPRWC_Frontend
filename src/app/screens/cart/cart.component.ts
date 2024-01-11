@@ -31,7 +31,7 @@ export class CartComponent implements OnInit, OnDestroy {
     if (!this.cart) {
       return 0;
     }
-    return this.cart.reduce((total, item) => total + item._quantity, 0);
+    return this.cart.reduce((total, item) => total + item._product.price * item._quantity, 0);
   }
 
   fakeDeliveryTime(): string {
