@@ -1,25 +1,37 @@
 <app-navigation></app-navigation>
 <div class="container">
-  <h2>Add New Product</h2>
+  <h1>Manage Products</h1>
   <form [formGroup]="form" (ngSubmit)="addProduct()">
-    <label for="name">Product Name:</label>
-    <input type="text" id="name" formControlName="name" required>
-    <label for="description">Product Description:</label>
-    <input type="text" id="description" formControlName="description" required>
-    <label for="price">Product Price:</label>
-    <input type="number" id="price" formControlName="price" required>
-
-    <button type="submit">Add Product</button>
+    <input
+      type="text"
+      id="name"
+      formControlName="name" required
+      placeholder="NAME"
+    >
+    <input
+      type="text"
+      id="description"
+      formControlName="description" required
+      placeholder="DESCRIPTION"
+    >
+    <input
+      type="number"
+      id="price"
+      formControlName="price" required
+      placeholder="PRICE"
+    >
+    <button class="add-btn" type="submit">Add Product</button>
   </form>
 
   <h2>All Products</h2>
-  <div *ngFor="let item of products" class="cart-item">
-    <div class="cart-item-details">
-      <div class="product-details">
-        <p class="item-name">{{ item.name }}</p>
-        <p class="item-description">{{ item.description }}</p>
+  <div *ngFor="let item of products" class="product">
+    <img [src]="'assets/images/' + item.id + '.jpg'" alt="{{ item.name }}" class="product-image" />
+    <div class="product-details">
+      <div class="details">
+        <p class="product-name">{{ item.name }}</p>
+        <p class="product-description">{{ item.description }}</p>
       </div>
-      <p class="item-price">{{ item.price }}</p>
+      <p class="product-price">€{{ item.price }}</p>
       <button class="remove-btn" (click)="removeProduct(item)"><span class="far fa-remove"></span></button>
     </div>
   </div>

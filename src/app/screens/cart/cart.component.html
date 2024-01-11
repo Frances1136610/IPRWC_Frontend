@@ -10,7 +10,7 @@
             <p class="item-name">{{ item._product.name }}</p>
             <p class="item-description">{{ item._product.description }}</p>
           </div>
-          <p class="item-price">{{ item._product.price }}</p>
+          <p class="item-price">€{{ item._product.price }}</p>
           <div class="quantity-container">
             <button class="quantity-button" (click)="updateQuantity(item)"><span class="far fa-minus"></span></button>
             <input type="number" [(ngModel)]="item._quantity" min="1" />
