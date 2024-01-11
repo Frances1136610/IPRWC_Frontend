@@ -19,33 +19,34 @@ import {MatDividerModule} from "@angular/material/divider";
 import { CartComponent } from './screens/cart/cart.component';
 import { ProductsComponent } from './screens/products/products.component';
 import {HttpClientModule} from "@angular/common/http";
-
+import { ProductsModule } from "src/app/modules/product/product.module";
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
     SlideshowComponent,
     LoginComponent,
     RegistrationComponent,
     HomeComponent,
     CartComponent,
-    ProductsComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MDBBootstrapModule.forRoot(),
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatIconModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDividerModule,
-        HttpClientModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDividerModule,
+    HttpClientModule,
+    ProductsModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [
+  ],
   schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
