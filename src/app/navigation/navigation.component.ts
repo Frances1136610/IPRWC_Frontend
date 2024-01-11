@@ -7,8 +7,17 @@ import { Component } from '@angular/core';
 })
 export class NavigationComponent {
   navbarOpen = false;
+  accountMenuOpen = false;
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
+  }
+
+  toggleAccountMenu() {
+    this.accountMenuOpen = !this.accountMenuOpen;
+  }
+
+  logout() {
+    window.location.href = '/login';
   }
 }

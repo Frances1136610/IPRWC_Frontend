@@ -18,6 +18,7 @@ import {SlideShowModule} from "./modules/slideshow.module";
 import {RegistrationModule} from "./modules/registration.module";
 import {LoginModule} from "./modules/login.module";
 import {AdminModule} from "./modules/admin.module";
+import {AccountMenuModule} from "./modules/account-menu.module";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {AdminModule} from "./modules/admin.module";
     SlideShowModule,
     RegistrationModule,
     LoginModule,
-    AdminModule
+    AdminModule,
+    AccountMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -25,7 +25,8 @@
 
     <div class="icons">
       <a class="nav-link" href="/cart"><i class="far fa-shopping-cart"></i></a>
-      <a class="nav-link" href="/login"><i class="far fa-user"></i></a>
+      <a class="nav-link" (click)="toggleAccountMenu()"><i class="far fa-user"></i></a>
     </div>
   </div>
 </nav>
+<app-account-menu *ngIf="accountMenuOpen" (logout)="logout()"></app-account-menu>
