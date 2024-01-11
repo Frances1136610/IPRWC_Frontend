@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit{
     name: new FormControl(''),
     description: new FormControl(''),
     price: new FormControl(''),
+    image: new FormControl('')
   });
   // @ts-ignore
   private newProductId: number;
@@ -29,7 +30,8 @@ export class AdminComponent implements OnInit{
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      price: ['', Validators.required]
+      price: ['', Validators.required],
+      image: ['', Validators.required]
     });
     this.productsService.setProducts([]);
     this.productsSub = this.productsService.getProducts().subscribe((data) => {
@@ -47,6 +49,7 @@ export class AdminComponent implements OnInit{
           name: this.form.value.name,
           description: this.form.value.description,
           price: this.form.value.price,
+          image: this.form.value.image
         };
 
         console.log(productDetails);

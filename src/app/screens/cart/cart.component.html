@@ -4,7 +4,7 @@
   <div class="content">
     <div class="items">
       <div *ngFor="let item of cart" class="cart-item">
-        <img [src]="'assets/images/' + item._product.id + '.jpg'" alt="{{ item._product.name }}" class="cart-item-image" />
+        <img [src]="item._product.image" alt="{{ item._product.name }}" class="cart-item-image" />
         <div class="cart-item-details">
           <div class="product-details">
             <p class="item-name">{{ item._product.name }}</p>

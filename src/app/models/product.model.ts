@@ -3,12 +3,22 @@ export class Product {
   private _name: string;
   private _description: string;
   private _price: number;
+  private _image: string;
 
-  constructor(id: bigint, name: string, description: string, price: number) {
+  constructor(id: bigint, name: string, description: string, price: number, image: string) {
     this._id = id;
     this._name = name;
     this._description = description;
-    this._price = price
+    this._price = price;
+    this._image = image;
+  }
+
+  get image(): string {
+    return this._image;
+  }
+
+  set image(value: string) {
+    this._image = value;
   }
 
   get price(): number {

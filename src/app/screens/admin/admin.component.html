@@ -20,12 +20,18 @@
       formControlName="price" required
       placeholder="PRICE"
     >
+    <input
+      type="text"
+      id="image"
+      formControlName="image" required
+      placeholder="IMAGE LINK"
+    >
     <button class="add-btn" type="submit">Add Product</button>
   </form>
 
   <h2>All Products</h2>
   <div *ngFor="let item of products" class="product">
-    <img [src]="'assets/images/' + item.id + '.jpg'" alt="{{ item.name }}" class="product-image" />
+    <img [src]="item.image" alt="{{ item.name }}" class="product-image" />
     <div class="product-details">
       <div class="details">
         <p class="product-name">{{ item.name }}</p>

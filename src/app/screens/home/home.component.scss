@@ -1,0 +1,90 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: left;
+  margin: 10px;
+}
+
+.hero h1 {
+  font-size: 50px;
+  color: #BC6C25;
+  margin-bottom: 20px;
+  font-family: "Palatino Linotype", serif;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #333;
+  font-family: "Palatino Linotype", serif;
+}
+
+.btn-shop {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #BC6C25;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Palatino Linotype", serif;
+  transition: background-color 0.3s ease;
+}
+
+.btn-shop:hover {
+  background-color: #DDA15E;
+}
+
+.about-us,
+.contact {
+  text-align: left;
+  margin:10px
+}
+
+.about-us h2,
+.contact h2 {
+  font-size: 30px;
+  color: #BC6C25;
+  margin-bottom: 20px;
+  font-family: "Palatino Linotype", serif;
+}
+
+.about-us p,
+.contact p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 30px;
+  font-family: "Palatino Linotype", serif;
+}
+
+.btn-learn-more,
+.btn-contact {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #BC6C25;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: "Palatino Linotype", serif;
+}
+
+.btn-learn-more:hover,
+.btn-contact:hover {
+  background-color: #DDA15E;
+}
+
+footer {
+  background-color: #BC6C25;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-family: "Palatino Linotype", serif;
+}

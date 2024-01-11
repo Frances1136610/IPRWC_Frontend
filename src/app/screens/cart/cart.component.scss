@@ -6,14 +6,14 @@
 h1 {
   margin: 30px 10px 10px;
   color: #BC6C25;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-family: 'Palatino Linotype', serif;
   font-size: 50px;
 }
 
 p {
   color: #BC6C25;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-family: 'Palatino Linotype', serif;
 }
 
@@ -45,6 +45,7 @@ p {
   p {
     margin: 0;
     font-size: 15px;
+    text-transform: uppercase;
   }
 
   .item-description {

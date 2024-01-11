@@ -19,7 +19,7 @@ export class ProductsService {
     return this.http.get<any>(environment.apiKey + 'product'
     ).pipe(map(data => {
         for (let i = 0; i < data['payload'].length; i++) {
-          this.products.push(new Product(data['payload'][i].id, data['payload'][i].name, data['payload'][i].description, data['payload'][i].price));
+          this.products.push(new Product(data['payload'][i].id, data['payload'][i].name, data['payload'][i].description, data['payload'][i].price, data['payload'][i].image));
         }
         return this.products;
       }
