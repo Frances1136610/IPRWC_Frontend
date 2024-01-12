@@ -19,7 +19,7 @@ export class NavigationComponent implements OnInit {
   }
 
   isUserAdmin(): boolean {
-    if (this.userService.getUser() === null) {
+    if (this.userService.getUser() === null || this.userService.getUser() === undefined) {
       return false;
     } else {
       if(this.userService.getUser()._role.includes("ADMIN")){

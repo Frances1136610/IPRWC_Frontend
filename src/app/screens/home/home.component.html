@@ -1,22 +1,25 @@
 <app-navigation></app-navigation>
 
-<div class="container">
-  <section class="hero">
-    <h1>Welcome to Your Art Supplies Shop</h1>
-    <p>Explore a world of creativity with our premium art supplies.</p>
-    <a href="/#/products" class="btn-shop">SHOP NOW</a>
-  </section>
+<section class="hero">
+  <img src="\assets\images\paint.webp" alt="Hero Image" style="height: 25rem">
+  <div class="button-container">
+    <h1>Welcome to GoldFish Art Supplies</h1>
+    <a href="/#/products" class="button btn-shop">EXPLORE NOW</a>
+  </div>
+</section>
 
-  <section class="about-us">
-    <h2>About Us</h2>
-    <p>Discover the story behind our art supplies shop and our commitment to creativity and quality.</p>
-    <a href="#" class="btn-learn-more">LEARN MORE</a>
-  </section>
+<div class="container">
+  <h2>Highlighted Products</h2>
+  <div class="scrolling-wrapper">
+    <div *ngFor="let product of products" class="card">
+      <img [src]="product.image" alt="{{ product.name }}" class="product-image"/>
+    </div>
+  </div>
 
   <section class="contact">
     <h2>Contact Us</h2>
     <p>Have questions or need assistance? Reach out to our friendly team.</p>
-    <a href="#" class="btn-contact">CONTACT US</a>
+    <a href="#" class="button btn-contact">CONTACT US</a>
   </section>
 </div>
 
