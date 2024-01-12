@@ -20,6 +20,7 @@ import {LoginModule} from "./modules/login.module";
 import {AdminModule} from "./modules/admin.module";
 import {AccountMenuModule} from "./modules/account-menu.module";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     RegistrationModule,
     LoginModule,
     AdminModule,
-    AccountMenuModule
+    AccountMenuModule,
+    MatSnackBarModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],

@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 import { CartService } from '../../services/cart.service';
 import { Product } from '../../models/product.model';
+import {MatSnackBar, MatSnackBarRef, TextOnlySnackBar} from "@angular/material/snack-bar";
+import {UserService} from "../../services/user-service";
 
 @Component({
   selector: 'app-products',
@@ -16,7 +18,9 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private cartService: CartService
+    private cartService: CartService,
+    private userService: UserService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -27,19 +31,30 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    let productDetails = {
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      price: product.price,
-    };
+    if (typeof(this.userService.getUser()) === 'object') {
+      this.showError();
+    } else {
+      let productDetails = {
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+      };
 
-    this.cartService.addToCart(productDetails).subscribe(() => {
-      this.buttonClicked = true;
+      this.cartService.addToCart(productDetails).subscribe(() => {
+        this.buttonClicked = true;
 
-      setTimeout(() => {
-        this.buttonClicked = false;
-      }, 1500);
+        setTimeout(() => {
+          this.buttonClicked = false;
+        }, 1500);
+      });
+    }
+  }
+
+  showError(): MatSnackBarRef<TextOnlySnackBar> {
+    return this._snackBar.open("Please login", 'Oh no..', {
+      duration: 2000,
+      horizontalPosition: 'right'
     });
   }
 }
