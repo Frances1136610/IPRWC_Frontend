@@ -45,11 +45,11 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
+    this.submitted = true;
+
     if (this.form.invalid) {
       return;
     }
-
-    this.submitted = true;
 
     let credentials = {
       email: this.form.value.email,

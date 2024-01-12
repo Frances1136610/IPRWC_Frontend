@@ -18,7 +18,6 @@ export class RegistrationComponent {
     repeatPassword: new FormControl(''),
   });
   submitted = false;
-  hide = true;
   error = "";
   private authSub!: Subscription;
   private userSub!: Subscription;

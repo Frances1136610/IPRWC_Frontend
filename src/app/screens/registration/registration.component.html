@@ -32,7 +32,6 @@
               type="password"
               formControlName="password"
               class="form-control"
-              [type]="hide ? 'password' : 'text'"
               [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
             />
             <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
@@ -47,7 +46,6 @@
               type="password"
               formControlName="repeatPassword"
               class="form-control"
-              [type]="hide ? 'password' : 'text'"
               [ngClass]="{ 'is-invalid': submitted && f['repeatPassword'].errors }"
             />
             <div *ngIf="submitted && f['repeatPassword'].errors" class="invalid-feedback">
