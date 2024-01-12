@@ -1,10 +1,22 @@
 import { Component } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {AuthService} from "../../services/auth-service";
-import {User} from "../../models/user.model";
-import {UserService} from "../../services/user-service";
-import {Subscription} from "rxjs";
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "../../services/auth-service";
+import { User } from "../../models/user.model";
+import { UserService } from "../../services/user-service";
+import { Subscription } from "rxjs";
+
+function passwordsMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const password = control.get('password')?.value;
+  const repeatPassword = control.get('repeatPassword')?.value;
+
+  if (password !== repeatPassword) {
+    control.get('repeatPassword')?.setErrors({ 'passwordsDoNotMatch': true });
+    return { 'passwordsDoNotMatch': true };
+  }
+
+  return null;
+}
 
 @Component({
   selector: 'app-registration',
@@ -21,8 +33,7 @@ export class RegistrationComponent {
   error = "";
   private authSub!: Subscription;
   private userSub!: Subscription;
-  // @ts-ignore
-  private newUserId: number;
+  private newUserId: number | undefined;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private userService: UserService) {}
 
@@ -47,6 +58,9 @@ export class RegistrationComponent {
           ]
         ],
       },
+      {
+        validators: passwordsMatchValidator
+      }
     );
   }
 
@@ -77,8 +91,6 @@ export class RegistrationComponent {
         password: this.form.value.password,
         role: "USER"
       }
-
-      console.log(credentials);
 
       this.authSub = this.authService.register(credentials).subscribe(
         () => {
