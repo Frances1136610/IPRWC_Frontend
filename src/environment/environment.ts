@@ -1,3 +1,3 @@
 export const environment = {
-  apiKey: "http://localhost:8080/api/v1/"
+  apiKey: "http://83.83.208.137:8080/api/v1/"
 };

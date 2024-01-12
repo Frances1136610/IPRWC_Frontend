@@ -21,7 +21,7 @@ export class CartComponent implements OnInit, OnDestroy {
     ) {}
 
   ngOnInit(): void {
-    if (typeof(this.userService.getUser()) === 'object') {
+    if (typeof!(this.userService.getUser()) === 'object') {
       this.showError();
     } else {
       this.cartService.setCart([]);

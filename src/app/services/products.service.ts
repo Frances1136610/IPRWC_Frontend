@@ -51,7 +51,10 @@ export class ProductsService {
   }
 
   getProductId() {
-    return this.http.get(environment.apiKey + 'product/id')
+    let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()});
+    return this.http.get(environment.apiKey + 'product/id',
+      { headers: header}
+      )
       .pipe(map(res => {
           // @ts-ignore
           this.productId = res['payload'];

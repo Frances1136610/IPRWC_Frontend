@@ -31,7 +31,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    if (typeof(this.userService.getUser()) === 'object') {
+    if (typeof!(this.userService.getUser()) === 'object') {
       this.showError();
     } else {
       let productDetails = {
