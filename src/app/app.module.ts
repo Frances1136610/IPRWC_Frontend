@@ -19,6 +19,7 @@ import {RegistrationModule} from "./modules/registration.module";
 import {LoginModule} from "./modules/login.module";
 import {AdminModule} from "./modules/admin.module";
 import {AccountMenuModule} from "./modules/account-menu.module";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import {AccountMenuModule} from "./modules/account-menu.module";
     AdminModule,
     AccountMenuModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
   exports: [
   ],

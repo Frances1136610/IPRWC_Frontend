@@ -18,6 +18,6 @@ export class AccountMenuComponent {
   onLogoutClick() {
     this.userService.destroyJWT();
     this.userService.destroyUser();
-    this.router.navigate(['/']);
+    this.router.navigateByUrl('/login');
   }
 }

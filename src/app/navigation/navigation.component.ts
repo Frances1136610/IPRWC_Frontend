@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../services/user-service";
 
 @Component({
@@ -6,20 +6,29 @@ import {UserService} from "../services/user-service";
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
   navbarOpen = false;
   accountMenuOpen = false;
+  isAdmin = false;
 
   constructor(private userService: UserService) {
   }
 
-  isUserAdmin(role: string): boolean {
-    console.log(this.userService.getUser());
-    console.log(role)
-    return role === 'ADMIN';
+  ngOnInit() {
+    this.isAdmin = this.isUserAdmin();
   }
 
-  isAdmin: boolean = this.isUserAdmin(this.userService.getUser()._role);
+  isUserAdmin(): boolean {
+    if (this.userService.getUser() === null) {
+      return false;
+    } else {
+      if(this.userService.getUser()._role.includes("ADMIN")){
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;

@@ -68,7 +68,6 @@ export class LoginComponent {
       });
       this.authSub.unsubscribe();
       this.router.navigate(['/'])
-      console.log(this.userService.getUser());
     });
     this.form.reset();
   }

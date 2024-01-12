@@ -75,8 +75,11 @@ export class RegistrationComponent {
       let credentials = {
         id: this.newUserId,
         email: this.form.value.email,
-        password: this.form.value.password
+        password: this.form.value.password,
+        role: "USER"
       }
+
+      console.log(credentials);
 
       this.authSub = this.authService.register(credentials).subscribe(
         () => {
